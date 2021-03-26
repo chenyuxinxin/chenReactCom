@@ -1,0 +1,33 @@
+
+.user-page-content{
+    width: 100%;
+    display: flex;
+    
+}
+.menu{
+    width: 10%;
+    background-color:#041527;
+}
+.right-page-box{
+    width: 90%;
+    background-color: #f2f2f2;
+    padding: 14px;
+    height:678px; 
+   
+}
+.right-page{
+    width: 100%;
+    background-color: #fff;
+    height: 100%;
+    padding:20px 40px;
+   
+}
+.title{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 14px;
+}
+.right-content{
+    line-height: 24px;
+    margin-bottom: 14px;
+}

@@ -1,0 +1,77 @@
+# deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: <%= buildName %>
+  name: <%= buildName %>
+  namespace: daily
+spec:
+  replicas: 4
+  strategy:
+    rollingUpdate:
+      maxSurge: 1      #滚动升级时会先启动1个pod
+      maxUnavailable: 2 #滚动升级时允许的最大Unavailable的pod个数
+  selector:
+    matchLabels:
+      app: <%= buildName %>
+  template:
+    metadata:
+      labels:
+        app: <%= buildName %>
+    spec:
+      containers:
+#        - image: registry.cn-hangzhou.aliyuncs.com/xuelang_algo/<%= buildName %>:latest
+        # 下面这个为部署时替换文件，不要修改
+        - image: DOCKERIMAGEURLWITHTAG
+          # 一定拉取最新镜像
+          imagePullPolicy: Always
+          name: <%= buildName %>
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /#/healthz
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /#/healthz
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 10
+---
+# service
+apiVersion: v1
+kind: Service
+metadata:
+  name: <%= buildName %>
+  namespace: daily
+spec:
+  selector:
+    app: <%= buildName %>
+  ports:
+    - port: 8080
+      targetPort: 8080
+      name: http
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: <%= buildName %>
+  namespace: daily
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+    - host: daily.console.hetu.xuelangyun.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: <%= buildName %>
+              servicePort: 8080
+
+

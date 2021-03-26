@@ -1,0 +1,78 @@
+  .input-part {
+    background-color: #fff;
+    padding: 40px 40px ;
+    width: 360px;
+    height: 360px;
+  }
+ .hello {
+    width: 280px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+  }
+  .input-part .welcome-text {
+    width: 280px;
+    text-align: center;
+    padding-bottom: 20px;
+  }
+  
+.input-part .login-button {
+    margin-top: 30px;
+    width: 100%;
+  }
+.input-part .login-button .login-box {
+    width: 64px;
+    margin: 0 auto;
+  }
+  .login-tab-box{
+    width: 280px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    /* align-items: center */
+  }
+  .login-tab{
+    width: 220px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .submit-box{
+    margin-top: 10px;
+    width: 280px;
+    display: flex;
+    justify-content: center;
+  }
+  .fz-blue{
+    color: #4091f7;
+  }
+  .register-verification {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.send-verification{
+    height: 24px;
+    line-height: 24px;
+    border:1px solid #4091f7;
+    color: #4091f7;
+    text-align: center;
+    font-size: 13px;
+
+}
+.register{
+  color: #4091f7;
+  margin-left: 10px;
+  width: 66px;
+  height: 32px;
+  line-height: 32px;
+}
+.df-box{
+  display: flex;
+}
+  
